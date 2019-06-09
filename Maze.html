@@ -1,0 +1,28 @@
+<html ng-app="maze">
+	<head>
+		<meta charset = "utf-8">
+		<title>Maze</title>
+		<link rel="stylesheet" href="maze.css">
+		<script src="angular.js"></script>
+		<script src="maze.controller.js"></script>
+	</head>
+	<body ng-controller="mazeController" ng-keydown="getKeys($event)">
+		<div id="divMaze">
+			<table>
+				<tr class="header">
+					<td class="title" colspan="{{maze.length}}">
+						<div>Maze</div>
+					</td>
+				</tr>
+				<tr ng-repeat="row in maze track by $index">
+					<td ng-repeat="col in row track by $index" ng-class="{'wall': col == 0, 'floor': col == 1}">&nbsp;</td>
+				</tr>
+				<tr class="footer">
+					<td class="detail" colspan="{{maze.length/2}}">&nbsp;</td>
+					<td class="detail" colspan="{{maze.length/2}}">&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
+
